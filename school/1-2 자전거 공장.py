@@ -1,3 +1,4 @@
+#내 풀이(0%)
 def solution(cost, order):
     torder = 0
     for i in range(len(order)):
@@ -12,4 +13,7 @@ def solution(cost, order):
     print(answer)
 
 
-solution([[0, 10], [50, 20]], [[3, 100], [4, 200]])
+solution(5,	[2, 4],	[1, 3, 5])
+
+#풀이1
+
