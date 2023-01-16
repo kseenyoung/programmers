@@ -24,10 +24,12 @@
 #     return answer
 
 
+#풀이
 def solution(storey):
-
-
-    return answer
+    if storey <= 1:
+        return storey
+    q, m = divmod(storey, 10)
+    return min(solution(q) + m, solution(q+1) + (10-m))
 
 
 print(solution(2554))
