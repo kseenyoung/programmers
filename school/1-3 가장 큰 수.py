@@ -17,4 +17,15 @@ def solution(numbers):
 
     return answer
 
+
 print(solution([6, 10, 2]))
+
+
+# 풀이
+def solution1(numbers):
+    numbers = [str(n) for n in numbers]
+    numbers.sort(key=lambda x: (x * 4)[:4])
+
+    if numbers[0] == '0':
+        return numbers[0]
+    return ''.join(numbers)
