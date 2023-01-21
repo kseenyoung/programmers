@@ -15,7 +15,6 @@ unbooked = [["09:00", "kim"], ["09:05", "bae"]]
 #     current += 10
 #     print(current)
 
-
 def timeFu(t):
     h, m = map(int, t.split(':'))
     return h*60 + m
