@@ -22,7 +22,6 @@ def solution(n, computers):
     # return answer
 
     #풀이
-
     def bfs(i):  # 컴퓨터 번호 입력
         q = deque()
         q.append(i)  # [0]
