@@ -31,8 +31,6 @@ def solution(X, Y):
         return answer if int(answer) != 0 else '0'  # 0이 여러개(ex 000) 결과는 0
 
 
-
-
 # 풀이2(참고)
 def solution1(X, Y):
     result = ''.join([str(i)*min(X.count(str(i)), Y.count(str(i))) for i in range(9, -1, -1)])
@@ -45,6 +43,44 @@ def solution1(X, Y):
         return ''.join(result)
 
 
+
+# 풀이3 (73.7% 시간초과)
+def solution(X, Y):
+    dicX = {}
+    dic = {}
+    for x in X:
+        if x not in dicX:
+            dicX[x] = 0
+        dicX[x] += 1
+
+    for y in Y:
+        if y in dicX and dicX[y] != 0:
+            dicX[y] -= 1
+            if y not in dic:
+                dic[y] = 0
+            dic[y] += 1
+    result = ''.join([d[0] * int(d[1]) for d in sorted(dic.items(), key=lambda x: -int(x[0]))])
+    return '-1' if result == '' else '0' if int(result) == 0 else result
+
+
+
+# 풀이4 참고(73.7% 시간초과 -> 100%)  : count, len 조합이 int 보다 빠르다
+def solution(X, Y):
+    result = ''.join([str(i)*min(X.count(str(i)), Y.count(str(i))) for i in range(9, -1, -1)])
+    return '-1' if result == '' else '0' if result.count('0') == len(result) else result
+
+
+
+# 풀이5 참고(73.7 시간초과 -> 100%)  : Collections 사용해도 len == count 조합을 사용해야 함
+from collections import Counter
+def solution(X, Y):
+    counteX = Counter(X)
+    counteY = Counter(Y)
+    result = ''
+    for x in reversed(sorted(counteX)):
+        if x in counteY:
+            result += x*min(counteX[x], counteY[x])
+    return '-1' if result == '' else '0' if len(result) == result.count('0') else result
 
 print(solution1("100"	,"2345"))
 print(solution1("100"	,"203045"))

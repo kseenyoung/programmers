@@ -54,3 +54,22 @@ def solution(babbling):
         if b.rstrip() == '':
             result += 1
     return result
+
+
+# 풀이3 (50% -> 60%) : 2번 반복하는 단어를 처음에 걸러냈다고 생각했는데 잘못 된 방법이었다.
+word = ['aya', 'ye', 'woo', 'ma']
+word2 = [a * 2 for a in word]
+
+def solution(babbling):
+    result = 0
+    for babble in babbling:
+        for w in word2:
+            if w in babble:
+                break
+        else:
+            for w in word:  # 발음 할 수 있는 단어
+                if w * 2 not in babble:
+                    babble = babble.replace(w, '')  # 할 수 있는 발음 삭제
+            result = result + 1 if babble == '' else result
+
+    return result
