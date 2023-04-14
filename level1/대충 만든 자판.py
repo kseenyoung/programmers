@@ -43,3 +43,26 @@ def solution(keymap, targets):
         if temp:
             answer.append(result)
     return answer
+
+# 재풀이(52% -> 100%) : target에서 타이핑할 수 없는 것이 하나라도 나오면 -1
+def solution(keymap, targets):
+    dic = {}
+    result = []
+    for key in keymap:
+        for i, k in enumerate(key):
+            if k not in dic:
+                dic[k] = i + 1
+            else:
+                dic[k] = min(dic[k], i + 1)
+    for target in targets:
+        count = 0
+        for t in target:
+            if t in dic:
+                count += dic[t]
+            else:
+                result.append(-1)
+                break
+        else:
+            result.append(count)
+
+    return result

@@ -31,3 +31,14 @@ def solution(ingredient):
             for _ in range(4):
                 answer.pop()  # 중요
     return count
+
+
+# 재풀이 (66.7% ->
+def solution(ingredient):
+    hambuger = '1231'
+    ingredient = ''.join([str(i) for i in ingredient])
+    result = 0
+    while hambuger in ingredient:
+        result += ingredient.count(hambuger)
+        ingredient = ingredient.replace(hambuger, '')
+    return result
