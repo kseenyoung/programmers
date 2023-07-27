@@ -1,0 +1,27 @@
+package algorithm;
+
+public class C42842 {
+	
+    public static int[] solution(int brown, int yellow) {
+        int[] answer = {0, 0};
+        for(int i=1; i<=(int)(yellow/2 + 1); i++){
+            if(yellow%i == 0){  //노랑 세로 찾음
+            	int j = (int)(yellow/i);
+                if(j*2+i*2 + 4 == brown){  //조합찾음
+                    answer[0] = (int)(yellow/i);
+                    answer[1] = i;
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+	
+
+	public static void main(String[] args) {
+		System.out.println(solution(10, 2));;
+		System.out.println(solution(8, 1));;
+
+	}
+
+}
